@@ -33,13 +33,13 @@ public class TripService {
         tripRepository.findAll().forEach(trips::add);
         return trips;
     }
-    public void addTrip(Long driverId , Long customerId , Integer customerRating , Integer driverRating){
+    public void addTrip(Long driverId , Long customerId , Integer driverRating , Integer customerRating ){
         Optional<Driver> driver = driverService.findDriverById(driverId);
         Optional<Customer> customer = customerService.findCustomerById(customerId);
         if(driver.isPresent() && customer.isPresent() ){
             Trip trip = new Trip();
-            trip.setDriver(driver.get());
-            trip.setCustomer(customer.get());
+//            trip.setDriver(driver.get());
+//            trip.setCustomer(customer.get());
             trip.setDriverRating(ratingService.getByValue(driverRating));
             trip.setCustomerRating(ratingService.getByValue(customerRating));
             tripRepository.save(trip);

@@ -2,7 +2,6 @@ package com.example.demo.trip;
 
 import java.util.List;
 
-import com.example.demo.driver.Temp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +20,7 @@ public class TripController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/addTrip")
-    public void addTrip(@RequestBody Temp temp ) {
-        tripService.addTrip(temp.getDriverId(), temp.getCustomerId(),temp.getCustomerRating(),temp.getDriverRating());
+    public void addTrip(@RequestBody Long driverId ,  @RequestBody Long customerId  , @RequestBody Integer driverRating , @RequestBody Integer customerRating) {
+        tripService.addTrip(driverId,customerId,driverRating,customerRating);
     }
 }
