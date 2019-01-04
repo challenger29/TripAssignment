@@ -1,21 +1,21 @@
 package com.example.demo.driver;
 
-import com.example.demo.trip.Trip;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name="driver")
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
+@Builder
 public class Driver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
+    @Column(name="driver_id")
     private Long id;
 
     @Getter @Setter
@@ -23,9 +23,5 @@ public class Driver {
 
     @Getter @Setter
     private Double avgRating;
-
-    @OneToMany
-    @Getter @Setter
-    private Set<Trip> trips;
 
 }

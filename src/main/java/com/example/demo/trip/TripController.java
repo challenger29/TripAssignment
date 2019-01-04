@@ -3,10 +3,7 @@ package com.example.demo.trip;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TripController {
@@ -19,8 +16,8 @@ public class TripController {
         return tripService.getAllTrips();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/addTrip")
-    public void addTrip(@RequestBody Long driverId ,  @RequestBody Long customerId  , @RequestBody Integer driverRating , @RequestBody Integer customerRating) {
+    @RequestMapping(method = RequestMethod.POST, value = "/addTrip/driver/{driverId}/customer/{customerId}")
+    public void addTrip(@PathVariable Long driverId , @PathVariable Long customerId  , Integer driverRating , Integer customerRating) {
         tripService.addTrip(driverId,customerId,driverRating,customerRating);
     }
 }

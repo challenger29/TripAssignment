@@ -38,8 +38,8 @@ public class TripService {
         Optional<Customer> customer = customerService.findCustomerById(customerId);
         if(driver.isPresent() && customer.isPresent() ){
             Trip trip = new Trip();
-//            trip.setDriver(driver.get());
-//            trip.setCustomer(customer.get());
+            trip.setDriver(driver.get());
+            trip.setCustomer(customer.get());
             trip.setDriverRating(ratingService.getByValue(driverRating));
             trip.setCustomerRating(ratingService.getByValue(customerRating));
             tripRepository.save(trip);

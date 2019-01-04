@@ -11,11 +11,12 @@ import java.util.Optional;
 public class DriverService {
 
     @Autowired
-    private DriverRepository driverRepository;
+    DriverRepository driverRepository;
 
-    public void addDriver(Driver driver){
+    public Driver addDriver(Driver driver){
         System.out.println(driver);
         driverRepository.save(driver);
+        return driver;
     }
     public List<Driver> getAllDriver(){
         List<Driver> drivers = new ArrayList<>();
